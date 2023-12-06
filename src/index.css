@@ -1,13 +1,23 @@
+@import "_variables.css";
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap";
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --background: radial-gradient(
+    farthest-side ellipse at 10% 0,
+    #333867 50%,
+    #17193b
+  );
+  --widget-bg: rgba(0, 0, 0, 0.24);
+  --sidebar-list-color: rgba(18, 20, 43, 0.42);
+  --widget-shadow: rgba(4, 7, 30, 0.4);
+  --text-color: hsla(0, 0%, 100%, 0.9);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

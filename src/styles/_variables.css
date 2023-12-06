@@ -1,0 +1,8 @@
+:root {
+    --background: radial-gradient(farthest-side ellipse at 10% 0,#333867 50%,#17193b);
+    --text-color: hsla(0,0%,100%,0.9);
+    --widget-bg: rgba(0,0,0,0.24);
+    --widget-bg-color: rgba(0,0,0,0.24);
+    --widget-shadow-color: rgba(4,7,30,0.4);
+
+}

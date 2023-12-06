@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Select from "react-select";
+import { Widget } from "./components/Widget";
+
+const options = [
+  { value: "ph", label: "pH" },
+  { value: "ec", label: "EC" },
+  { value: "oc", label: "OC" },
+  { value: "p", label: "P" },
+  { value: "n", label: "N" },
+  { value: "k", label: "K" },
+];
+
+const Indicators = () => <Select options={options} />;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>AI4LS</h1>
+      <Indicators className="input-transparent" />
+
+      <div className="row">
+        <div className="col-12 col-lg-6 col-xl-4">
+          <Widget />
+        </div>
+      </div>
     </div>
   );
 }
