@@ -1,0 +1,25 @@
+@import "_variables.scss";
+
+.App {
+  margin: 25px 40px 60px;
+  color: rgba(244,244,245,.9);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.data-row {
+  margin-top: 50px;
+  min-height: 300px;
+}
+
+.input-transparent {
+  border: none;
+  color: rgba(244, 244, 245, 0.9);
+  background-color: #12142b;
+  opacity: 0.8;
+  position: relative;
+  flex: 1 1 auto;
+}

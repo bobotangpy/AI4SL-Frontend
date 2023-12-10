@@ -1,28 +1,29 @@
-import "./App.css";
-import Select from "react-select";
-import { Widget } from "./components/Widget";
-
-const options = [
-  { value: "ph", label: "pH" },
-  { value: "ec", label: "EC" },
-  { value: "oc", label: "OC" },
-  { value: "p", label: "P" },
-  { value: "n", label: "N" },
-  { value: "k", label: "K" },
-];
-
-const Indicators = () => <Select options={options} />;
+import React from "react";
+import "./styles/App.scss";
+import Tableau from "./components/Tableau";
+import Widget from "./components/Widget";
+import Indicators from "./components/Indicators";
 
 function App() {
   return (
     <div className="App">
-      <h1>AI4LS</h1>
-      <Indicators className="input-transparent" />
+      <h1 style={{ textAlign: "center" }}>AI4LS</h1>
+
+      <div className="row data-row">
+        <div className="col-2 col-lg-4 col-xl-4">
+          <Indicators />
+        </div>
+        <div className="col-lg-8">
+          <div className="row">
+            <Widget />
+            <Widget />
+            <Widget />
+          </div>
+        </div>
+      </div>
 
       <div className="row">
-        <div className="col-12 col-lg-6 col-xl-4">
-          <Widget />
-        </div>
+        <Tableau />
       </div>
     </div>
   );

@@ -1,0 +1,43 @@
+@import './_variables.scss';
+
+.widget {
+  color: rgba(244, 244, 245, 0.6);
+  display: block;
+  position: relative;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  background: var(--widget-bg-color);
+  box-shadow: var(--widget-shadow-color);
+
+  .header {
+    transition: padding .3s linear;
+    padding: 15px 20px 0;
+    color: rgba(244,244,245,.9);
+  }
+
+  .body {
+    padding: 15px 20px;
+
+    p {
+      font-size: .875rem;
+    }
+  }
+}
+
+.card-body {
+  background: var(--widget-bg-color) !important;
+  color: rgba(244, 244, 245, 0.6) !important;
+}
+
+.widget-background {
+  position: fixed;
+  display: none !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(farthest-side ellipse at 10% 0,#333867 20%,#17193b);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 55;
+}
