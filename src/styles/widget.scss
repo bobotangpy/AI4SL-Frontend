@@ -8,6 +8,7 @@
   border-radius: 10px;
   background: var(--widget-bg-color);
   box-shadow: var(--widget-shadow-color);
+  min-height: 250px;
 
   .header {
     transition: padding .3s linear;

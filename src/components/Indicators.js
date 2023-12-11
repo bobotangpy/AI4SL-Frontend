@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Select, { StylesConfig } from "react-select";
 
 const colourStyles = {
@@ -31,13 +32,29 @@ const options = [
   { value: "k", label: "K" },
 ];
 
-export default function Indicators() {
+export default function Indicators({
+  indicator,
+  handleSelectIndicator,
+  showIndicatorWarning,
+}) {
   return (
-    <Select
-      className="input-transparent"
-      placeholder="Select Indicator"
-      options={options}
-      styles={colourStyles}
-    />
+    <>
+      <Select
+        className="input-transparent"
+        placeholder="Select Indicator"
+        options={options}
+        styles={colourStyles}
+        onChange={(e) => handleSelectIndicator(e.value)}
+        value={options.find(function (option) {
+          return option.value === indicator;
+        })}
+      />
+      <p
+        className="warning"
+        style={{ display: showIndicatorWarning ? "block" : "none" }}
+      >
+        Please select a chemical indicator.
+      </p>
+    </>
   );
 }

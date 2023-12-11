@@ -27,7 +27,7 @@
 
 .input-transparent {
   border: none;
-  color: rgba(244, 244, 245, 0.9);
+  color: rgba(244, 244, 245, 0.9) !important;
   background-color: #12142b;
   opacity: 0.8;
   position: relative;
@@ -37,4 +37,12 @@
 .dark {
   color: inherit;
   background: #040620 !important;
+}
+
+input:focus {
+  outline: none;
+}
+
+.warning {
+  color: #fd5f00;
 }

@@ -4,10 +4,11 @@ const axiosClient = axios.create({
   baseURL: "",
 });
 
-export function getLandPrediction({ indicators }) {
+export function getLandPrediction({ indicator, value }) {
   return axiosClient
     .post("/predict_land_management", {
-      indicators,
+      indicator,
+      value,
     })
     .then((res) => res.data);
 }
