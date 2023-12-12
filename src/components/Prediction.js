@@ -4,6 +4,9 @@ import Widget from "./Widget";
 import Indicators from "./Indicators";
 import ValueInput from "./ValueInput";
 import { getLandPrediction } from "../services/axios";
+import SoilChemInput from "./SoilChemRangeInput";
+import ValueInputGroup from "./SoilChemValuesInput";
+
 
 export default function Prediction() {
   const [indicator, setIndicator] = useState();
@@ -60,13 +63,24 @@ export default function Prediction() {
   return (
     <div className="row data-row">
       <div className="col-2 col-lg-4 col-xl-4">
+        Prediction 1
+        <div>Land Use Type</div>
         <Indicators
           indicator={indicator}
           handleSelectIndicator={handleSelectIndicator}
           showIndicatorWarning={showIndicatorWarning}
         />
+        Land Cover Type
+        <Indicators
+          indicator={indicator}
+          handleSelectIndicator={handleSelectIndicator}
+          showIndicatorWarning={showIndicatorWarning}
+        />
+        <button type="submit">Submit</button>
+        <Widget data={{}} />
       </div>
-      <div className="col-lg-8">
+
+      {/* <div className="col-lg-8">
         <div className="row">
           <ValueInput
             handleIndicatorValueChange={handleIndicatorValueChange}
@@ -75,6 +89,23 @@ export default function Prediction() {
           />
           <Widget data={prediction} />
           <Widget data={prediction} />
+        </div>
+      </div> */}
+      <div className="col-lg-8">
+        Prediction 2
+        <div>Chemical Attributes</div>
+        <div className="row">
+          {/* <SoilChemInput /> */}
+          <ValueInput
+            handleIndicatorValueChange={handleIndicatorValueChange}
+            handleSubmit={handleSubmit}
+            showValueWarning={showValueWarning}
+          />
+          <ValueInputGroup
+            setPrediction={setPrediction}
+          />
+          <Widget data={prediction} />
+          {/* <Widget data={prediction} /> */}
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "",
+  baseURL: "http://localhost:5000",
 });
 
 export function getLandPrediction({ indicator, value }) {
@@ -10,5 +10,11 @@ export function getLandPrediction({ indicator, value }) {
       indicator,
       value,
     })
+    .then((res) => res.data);
+}
+
+export function postChemAttributes4Predictions(chem_attributes) {
+  return axiosClient
+    .post("/chem_attributes_for_predictions", chem_attributes)
     .then((res) => res.data);
 }
