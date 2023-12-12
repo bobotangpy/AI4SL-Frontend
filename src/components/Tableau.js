@@ -5,7 +5,7 @@ const { tableau } = window;
 function Tableau() {
     const vizRef = useRef(null);
     // update Tableau Dashboard URL here if needed
-    const url = "https://public.tableau.com/shared/G7CWM3MZX"
+    const url = "https://public.tableau.com/shared/G7CWM3MZX";
     const options = {
         device: "desktop",
     };
