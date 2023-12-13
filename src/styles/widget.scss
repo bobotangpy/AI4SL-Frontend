@@ -1,0 +1,45 @@
+@import './_variables.scss';
+
+.widget {
+  color: rgba(244, 244, 245, 0.8);
+  display: block;
+  position: relative;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  background: var(--widget-bg-color);
+  box-shadow: var(--widget-shadow-color);
+  min-height: 250px;
+
+  .header {
+    transition: padding .3s linear;
+    padding: 30px 25px;
+    color: rgba(244,244,245,.9);
+    font-weight: 400;
+  }
+
+  .body {
+    padding: 15px 20px;
+
+    p {
+      font-size: .875rem;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.widget-background {
+  position: fixed;
+  display: none !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(farthest-side ellipse at 10% 0,#333867 20%,#17193b);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 55;
+}

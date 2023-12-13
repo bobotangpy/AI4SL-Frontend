@@ -4,8 +4,10 @@ const { tableau } = window;
 
 function Tableau() {
     const vizRef = useRef(null);
-    // update Tableau Dashboard URL here if needed
-    const url = "https://public.tableau.com/shared/G7CWM3MZX";
+  
+    // const url = "https://public.tableau.com/shared/789GCN242";
+    const url = "https://public.tableau.com/views/concated_version/Dashboard1";
+ 
     const options = {
         device: "desktop",
     };
@@ -32,8 +34,7 @@ function Tableau() {
     }, []);
 
     return (
-        <div>
-            <p>Soil Attribute</p>
+        <div style={{padding: "8px 20px"}}>
             <div ref={vizRef}></div>
         </div>
     );

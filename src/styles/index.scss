@@ -1,0 +1,31 @@
+@import "_variables.scss";
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap";
+
+body {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  --widget-bg: rgba(0, 0, 0, 0.24);
+  --sidebar-color: var(--sidebar-list-color);
+  --widget-shadow: rgba(4, 7, 30, 0.4);
+  --text-color: hsla(0, 0%, 100%, 0.9);
+  text-align: center;
+  background: radial-gradient(
+    farthest-side ellipse at 10% 0,
+    #333867 50%,
+    #17193b
+  );
+  height: 100%;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 300;
+}
