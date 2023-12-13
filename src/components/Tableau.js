@@ -4,8 +4,10 @@ const { tableau } = window;
 
 function Tableau() {
     const vizRef = useRef(null);
+  
     // const url = "https://public.tableau.com/shared/789GCN242";
     const url = "https://public.tableau.com/views/concated_version/Dashboard1";
+ 
     const options = {
         device: "desktop",
     };
