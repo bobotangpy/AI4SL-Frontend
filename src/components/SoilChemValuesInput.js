@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { queryChemAttributesPredictions } from "../services/axios";
+import valueUnits from "../data/value_units.json"
 
-export default function SoilChemValuesInput({ setPrediction }) {
+export default function SoilChemValuesInput({ setPrediction, setChemAttributeInputs }) {
   const [formData, setFormData] = useState({
     pH_H2O: "",
     EC: "",
@@ -49,6 +50,7 @@ export default function SoilChemValuesInput({ setPrediction }) {
       console.error("Invalid inputs");
       return;
     }
+    setChemAttributeInputs(formData)
     queryChemAttributesPredictions(formData)
       .then((response) => {
         console.log(response);
@@ -88,6 +90,7 @@ export default function SoilChemValuesInput({ setPrediction }) {
               value={formData[key]}
               onChange={handleChange}
             />
+            <div>{validationRanges[key]["min"]}-{validationRanges[key]["max"]} {valueUnits[key]}</div>
           </label>
         ))}
         <button type="submit" className="button">

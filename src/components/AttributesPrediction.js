@@ -1,8 +1,9 @@
 import { useState } from "react";
-import Widget from "./Widget";
+import AttributePredictionResult from "./AttributePredictionResult";
 import SoilChemValuesInput from "./SoilChemValuesInput";
 
 export default function AttributesPrediction() {
+  const [chemAttributeInputs, setChemAttributeInputs] = useState();
   const [prediction, setPrediction] = useState();
 
   return (
@@ -11,10 +12,10 @@ export default function AttributesPrediction() {
         <h5>Prediction Method 2 - Chemical Attributes</h5>
 
         <div style={{ margin: "50px 0 50px 0" }}>
-          <SoilChemValuesInput setPrediction={setPrediction} />
+          <SoilChemValuesInput setPrediction={setPrediction} setChemAttributeInputs={setChemAttributeInputs} />
         </div>
 
-        {prediction && <Widget data={prediction} />}
+        {prediction && <AttributePredictionResult input={chemAttributeInputs} prediction={prediction} />}
       </div>
     </div>
   );
