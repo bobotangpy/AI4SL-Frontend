@@ -1,10 +1,15 @@
 import "../styles/widget.scss";
 import Chart from "react-apexcharts";
+import RadarChart from 'react-svg-radar-chart';
+// import RadarChart from "./RadarChart";
+// import { Radar } from 'react-chartjs-2';
+import BulletChart from "./BulletChart";
+import standardRanges from "../data/standard_ranges.json"
+import valueRanges from "../data/value_ranges.json"
+
 
 // TODO:
-const LandCoverPrediction = () => {
-  return null;
-};
+
 
 const LandUsePrediction = ({ data }) => {
   const donutSettings = {
@@ -40,8 +45,51 @@ const LandUsePrediction = ({ data }) => {
   );
 };
 
+
+
+
+
 export default function Widget({ predictionMethod, data }) {
-  // let predictions = data["data"];
+  const renderPredictions = () => {
+    return Object.keys(data).map((attribute) => {
+      const attributeData = data[attribute];
+        if (!attributeData.hasOwnProperty("out_of_standard")) {
+          const { value } = attributeData
+          return (
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <div>{attribute}</div>
+              <div>{value}</div>
+            </div>
+          )
+        }
+      }
+    )
+  }
+  const renderPredictionsWithStandard = () => {
+    return Object.keys(data).map((attribute) => {
+      const attributeData = data[attribute];
+      if (attributeData.hasOwnProperty("out_of_standard")) {
+        const { value, out_of_standard } = attributeData;
+        const standardRange = standardRanges[attribute]
+        const valueRange = valueRanges[attribute]
+
+        return (
+          <div style={{ textAlign: 'center' }}>
+            <div>{attribute}</div>
+            <BulletChart
+              key={attribute}
+              attribute={attribute}
+              value={value}
+              standardRange={standardRange}
+              valueRange={valueRange}
+              />
+              <div>{value.toFixed(2)}</div>
+          </div>
+        );
+      }
+      return null; 
+    });
+  };
 
   return (
     <div className="col-12">
@@ -51,14 +99,19 @@ export default function Widget({ predictionMethod, data }) {
           <div className="d-flex justify-content-between mb-lg body">
             <p>{JSON.stringify(data)}</p>
 
-            {predictionMethod === "landUse" && (
-              <LandUsePrediction data={data} />
-            )}
+            {/* {predictionMethod === "landClasses" && (
+              <LandClassesPrediction data={data} />
+            )} */}
 
-            {predictionMethod === "landCover" && (
-              <LandCoverPrediction data={data} />
-            )}
           </div>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            {renderPredictionsWithStandard()}
+          </div>
+          <div>
+            {renderPredictions()}
+          </div>
+
+
         </div>
       </div>
       <div className="widget-background"></div>

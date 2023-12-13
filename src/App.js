@@ -14,15 +14,15 @@ function App() {
         />
         <h1 style={{ width: "fit-content" }}>AI4LS</h1>
       </div>
+      <div className="row">
+        <Tableau />
+      </div>
 
       <div className="row">
         <LandPrediction />
         <AttributesPrediction />
       </div>
 
-      <div className="row">
-        <Tableau />
-      </div>
     </div>
   );
 }

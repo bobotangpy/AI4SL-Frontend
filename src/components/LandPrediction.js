@@ -105,7 +105,7 @@ export default function LandPrediction() {
           </button>
         </div>
 
-        {prediction && <Widget predictionMethod="landUse" data={prediction} />}
+        {prediction && <Widget predictionMethod="landClasses" data={prediction} />}
       </div>
     </div>
   );

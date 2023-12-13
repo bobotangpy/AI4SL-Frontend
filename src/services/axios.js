@@ -37,9 +37,9 @@ export function queryLandPrediction({ indicator, value }) {
     });
 }
 
-export function queryChemAttributesPredictions(chem_attributes) {
+export function queryChemAttributesPredictions(chemAttributes) {
   return axiosClient
-    .post("/chem_attributes_for_predictions", chem_attributes)
+    .post("/chem_attributes_for_predictions", chemAttributes)
     .then((res) => {
       if (res.data) {
         return res.data;
