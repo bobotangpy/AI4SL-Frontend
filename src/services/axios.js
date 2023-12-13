@@ -52,9 +52,13 @@ export function queryChemAttributesPredictions(chem_attributes) {
     });
 }
 
-export function queryLandUseCoverPredictions() {
+export function queryLandUseCoverPredictions(selectedUseClass, selectedCoverClass) {
+  let jsonBody = {
+    "LU1_Desc": [selectedUseClass],
+    "LC0_Desc": [selectedCoverClass]
+  }
   return axiosClient
-    .post("/land_use_and_cover_for_predictions", )
+    .post("/land_use_and_cover_for_predictions", jsonBody)
     .then((res) => {
       if (res.data) {
         return res.data;

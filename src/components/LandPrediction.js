@@ -18,7 +18,7 @@ export default function LandPrediction() {
 
   useEffect(() => {
     // TODO: need to test & fetch the data, on my machine is error
-    getLandClasses
+    getLandClasses()
       .then((res) => {
         if (res !== "No Data") {
           setCoverClasses(res.land_cover_classes);
@@ -47,7 +47,7 @@ export default function LandPrediction() {
   const handleSubmit = () => {
     if (selectedUseClass && selectedCoverClass) {
       // TODO: need to try call api & get correct values
-      queryLandUseCoverPredictions()
+      queryLandUseCoverPredictions(selectedUseClass, selectedCoverClass)
         .then((res) => {
           if (res !== "No Data") {
             setPrediction(res.all_attributes.result);
