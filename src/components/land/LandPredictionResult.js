@@ -14,7 +14,7 @@ export default function LandPredictionResult({
     return Object.keys(prediction).map((attribute) => {
       const attributeData = prediction[attribute];
       if (
-        attributeData?.info?.category == category &&
+        attributeData?.info?.category === category &&
         !attributeData.hasOwnProperty("out_of_standard")
       ) {
         const { value, info } = attributeData;

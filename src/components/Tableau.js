@@ -31,7 +31,7 @@ function Tableau() {
     return () => {
       cleanupViz(); // Clean up the Tableau viz on component unmount
     };
-  }, []);
+  }, [options]);
 
   return (
     <div style={{ padding: "8px 20px" }}>

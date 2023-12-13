@@ -17,7 +17,7 @@ export default function AttributesPredictionResult({ prediction, input }) {
       const attributeData = result[attribute];
       // console.log(attributeData);
       if (
-        attributeData?.info?.category == category &&
+        attributeData?.info?.category === category &&
         !attributeData.hasOwnProperty("out_of_standard")
       ) {
         const { value, info } = attributeData;
