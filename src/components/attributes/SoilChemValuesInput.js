@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { queryChemAttributesPredictions } from "../services/axios";
-import valueUnits from "../data/value_units.json"
+import React, { useState } from "react";
+import { queryChemAttributesPredictions } from "../../services/axios";
+import valueUnits from "../../data/value_units.json";
 
-export default function SoilChemValuesInput({ setPrediction, setChemAttributeInputs }) {
+export default function SoilChemValuesInput({
+  setPrediction,
+  setChemAttributeInputs,
+}) {
   const [formData, setFormData] = useState({
     pH_H2O: "",
     EC: "",
@@ -22,12 +25,6 @@ export default function SoilChemValuesInput({ setPrediction, setChemAttributeInp
     N: { min: 0, max: 50 },
     K: { min: 0, max: 1000 },
   };
-
-  // useEffect(() => {
-  //   if (formData) {
-  //     console.log(formData);
-  //   }
-  // }, [formData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,7 +47,7 @@ export default function SoilChemValuesInput({ setPrediction, setChemAttributeInp
       console.error("Invalid inputs");
       return;
     }
-    setChemAttributeInputs(formData)
+    setChemAttributeInputs(formData);
     queryChemAttributesPredictions(formData)
       .then((response) => {
         console.log(response);
@@ -79,24 +76,25 @@ export default function SoilChemValuesInput({ setPrediction, setChemAttributeInp
   };
 
   return (
-    <div className="col-8 col-lg-6 col-xl-4">
-      <form className="attrGroup" onSubmit={handleSubmit}>
-        {Object.keys(validationRanges).map((key) => (
-          <label key={key}>
-            {key}:
-            <input
-              type="text"
-              name={key}
-              value={formData[key]}
-              onChange={handleChange}
-            />
-            <div>{validationRanges[key]["min"]}-{validationRanges[key]["max"]} {valueUnits[key]}</div>
-          </label>
-        ))}
-        <button type="submit" className="button">
-          Predict
-        </button>
-      </form>
-    </div>
+    <form className="attrGroup" onSubmit={handleSubmit}>
+      {Object.keys(validationRanges).map((key) => (
+        <label key={key}>
+          {key}:
+          <input
+            type="text"
+            name={key}
+            value={formData[key]}
+            onChange={handleChange}
+          />
+          <span>
+            ({validationRanges[key]["min"]}-{validationRanges[key]["max"]}{" "}
+            {valueUnits[key]})
+          </span>
+        </label>
+      ))}
+      <button type="submit" className="button">
+        Predict
+      </button>
+    </form>
   );
 }

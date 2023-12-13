@@ -82,6 +82,10 @@
   background: #040620 !important;
 }
 
+.bold {
+  font-weight: 500;
+}
+
 input:focus {
   outline: none;
 }
@@ -92,4 +96,10 @@ input:focus {
 
 .apexcharts-legend-text {
   color: inherit !important;
+}
+
+.attributes {
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px 8px;
 }

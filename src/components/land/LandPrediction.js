@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import Widget from "./LandPredictionResult";
+import LandPredictionResult from "./LandPredictionResult";
 import Indicators from "./Indicators";
 import {
   getLandClasses,
-  queryLandPrediction,
   queryLandUseCoverPredictions,
-} from "../services/axios";
-import ModelInfo from "./ModelInfo";
+} from "../../services/axios";
 
 export default function LandPrediction() {
   const [coverClasses, setCoverClasses] = useState();
@@ -55,7 +53,7 @@ export default function LandPrediction() {
           if (res !== "No Data") {
             setPrediction(res.all_attributes.result);
             setModelInfo(res.all_attributes.model_info);
-            setModelAccuracies(res.all_attributes.model_accuracy)
+            setModelAccuracies(res.all_attributes.model_accuracy);
           } else {
             return res;
           }
@@ -68,9 +66,6 @@ export default function LandPrediction() {
       setShowUseClassWarning(true);
       setShowCoverClassWarning(true);
     }
-
-    // if (indicator && indicatorValue)
-    //   predictionQuery.refetch(indicator, indicatorValue);
   };
 
   return (
@@ -110,8 +105,16 @@ export default function LandPrediction() {
           </button>
         </div>
 
-        {prediction && <Widget predictionMethod="landClasses" data={prediction} />}
-        {modelInfo && modelAccuracies && <ModelInfo modelInfo={modelInfo} modelAccuracies={modelAccuracies} />}
+        {prediction && modelInfo && modelAccuracies && (
+          <LandPredictionResult
+            predictionMethod="landClasses"
+            prediction={prediction}
+            modelInfo={modelInfo} modelAccuracies={modelAccuracies}
+          />
+        )}
+        {/* {modelInfo && modelAccuracies && (
+          <ModelInfo modelInfo={modelInfo} modelAccuracies={modelAccuracies} />
+        )} */}
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from "react";
 import "./styles/App.scss";
 import Tableau from "./components/Tableau";
-import LandPrediction from "./components/LandPrediction";
-import AttributesPrediction from "./components/AttributesPrediction";
+import LandPrediction from "./components/land/LandPrediction";
+import AttributesPrediction from "./components/attributes/AttributesPrediction";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "http://91.92.116.108:5000",
 });
 
 export function getLandClasses() {

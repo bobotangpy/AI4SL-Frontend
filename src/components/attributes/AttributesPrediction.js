@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AttributePredictionResult from "./AttributePredictionResult";
+import AttributesPredictionResult from "./AttributesPredictionResult";
 import SoilChemValuesInput from "./SoilChemValuesInput";
 
 export default function AttributesPrediction() {
@@ -15,7 +15,7 @@ export default function AttributesPrediction() {
           <SoilChemValuesInput setPrediction={setPrediction} setChemAttributeInputs={setChemAttributeInputs} />
         </div>
 
-        {prediction && <AttributePredictionResult input={chemAttributeInputs} prediction={prediction} />}
+        {prediction && <AttributesPredictionResult input={chemAttributeInputs} prediction={prediction} />}
       </div>
     </div>
   );
