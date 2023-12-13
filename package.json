@@ -55,7 +55,7 @@
     ]
   },
   "devDependencies": {
-    "webpack": "^5.89.0"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "engines": {
     "node": "20.5.1"
