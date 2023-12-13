@@ -56,5 +56,8 @@
   },
   "devDependencies": {
     "webpack": "^5.89.0"
+  },
+  "engines": {
+    "node": "20.5.1"
   }
 }
