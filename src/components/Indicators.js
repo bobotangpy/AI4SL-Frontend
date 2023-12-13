@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Select, { StylesConfig } from "react-select";
 
 const colourStyles = {
@@ -23,37 +22,35 @@ const colourStyles = {
   singleValue: (styles) => ({ ...styles }),
 };
 
-const options = [
-  { value: "ph", label: "pH" },
-  { value: "ec", label: "EC" },
-  { value: "oc", label: "OC" },
-  { value: "p", label: "P" },
-  { value: "n", label: "N" },
-  { value: "k", label: "K" },
-];
-
 export default function Indicators({
-  indicator,
-  handleSelectIndicator,
-  showIndicatorWarning,
+  title,
+  classes,
+  selectedClass,
+  handleSelectClass,
+  showWarning,
 }) {
+  const options = classes.map((item) => ({
+    value: item,
+    label: item,
+  }));
+
   return (
     <>
       <Select
         className="input-transparent"
-        placeholder="Select Indicator"
+        placeholder={`Select ${title}`}
         options={options}
         styles={colourStyles}
-        onChange={(e) => handleSelectIndicator(e.value)}
-        value={options.find(function (option) {
-          return option.value === indicator;
+        onChange={(e) => handleSelectClass(e.value)}
+        value={options.find((option) => {
+          return option.value === selectedClass;
         })}
       />
       <p
         className="warning"
-        style={{ display: showIndicatorWarning ? "block" : "none" }}
+        style={{ display: showWarning ? "block" : "none" }}
       >
-        Please select a chemical indicator.
+        Please select a class.
       </p>
     </>
   );

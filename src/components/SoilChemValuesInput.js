@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { postChemAttributes4Predictions } from '../services/axios';
+import React, { useEffect, useState } from "react";
+import { queryChemAttributesPredictions } from "../services/axios";
 
-const SoilChemValuesInput = ({ setPrediction }) => {
+export default function SoilChemValuesInput({ setPrediction }) {
   const [formData, setFormData] = useState({
-    pH_H2O: '',
-    EC: '',
-    OC: '',
-    CaCO3: '',
-    P: '',
-    N: '',
-    K: '',
+    pH_H2O: "",
+    EC: "",
+    OC: "",
+    CaCO3: "",
+    P: "",
+    N: "",
+    K: "",
   });
 
   const validationRanges = {
@@ -22,6 +22,12 @@ const SoilChemValuesInput = ({ setPrediction }) => {
     K: { min: 0, max: 1000 },
   };
 
+  // useEffect(() => {
+  //   if (formData) {
+  //     console.log(formData);
+  //   }
+  // }, [formData]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -30,7 +36,7 @@ const SoilChemValuesInput = ({ setPrediction }) => {
 
     setFormData((prevData) => ({
       ...prevData,
-      [name]: isNaN(numericValue) ? '' : numericValue, // Set empty string if the value is not a valid number
+      [name]: isNaN(numericValue) ? "" : numericValue, // Set empty string if the value is not a valid number
     }));
   };
 
@@ -40,13 +46,13 @@ const SoilChemValuesInput = ({ setPrediction }) => {
     // Validate inputs
     if (!validateInputs(formData)) {
       // Handle validation error (e.g., display an error message)
-      console.error('Invalid inputs');
+      console.error("Invalid inputs");
       return;
     }
-    postChemAttributes4Predictions(formData)
+    queryChemAttributesPredictions(formData)
       .then((response) => {
-        console.log(response)
-        setPrediction(response)
+        console.log(response);
+        setPrediction(response);
       })
       .catch((error) => {
         // Handle any errors that occur during the request
@@ -58,7 +64,7 @@ const SoilChemValuesInput = ({ setPrediction }) => {
     // Check if any input is empty or outside the specified range
     for (const key in formData) {
       const value = parseFloat(formData[key]);
-      if (formData[key] === '' || isNaN(value) || !isWithinRange(value, key)) {
+      if (formData[key] === "" || isNaN(value) || !isWithinRange(value, key)) {
         return false;
       }
     }
@@ -70,75 +76,24 @@ const SoilChemValuesInput = ({ setPrediction }) => {
     return value >= min && value <= max;
   };
 
-
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        pH_H2O:
-        <input
-          type="text"
-          name="pH_H2O"
-          value={formData.pH_H2O}  // Update value prop to reflect current state
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        EC:
-        <input
-          type="text"
-          name="EC"
-          value={formData.EC}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        OC:
-        <input
-          type="text"
-          name="OC"
-          value={formData.OC}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        CaCO3:
-        <input
-          type="text"
-          name="CaCO3"
-          value={formData.CaCO3}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        P:
-        <input
-          type="text"
-          name="P"
-          value={formData.P}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        N:
-        <input
-          type="text"
-          name="N"
-          value={formData.N}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        K:
-        <input
-          type="text"
-          name="K"
-          value={formData.K}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <div className="col-8 col-lg-6 col-xl-4">
+      <form className="attrGroup" onSubmit={handleSubmit}>
+        {Object.keys(validationRanges).map((key) => (
+          <label key={key}>
+            {key}:
+            <input
+              type="text"
+              name={key}
+              value={formData[key]}
+              onChange={handleChange}
+            />
+          </label>
+        ))}
+        <button type="submit" className="button">
+          Predict
+        </button>
+      </form>
+    </div>
   );
-};
-
-export default SoilChemValuesInput;
+}

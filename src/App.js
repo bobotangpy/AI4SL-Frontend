@@ -1,10 +1,8 @@
 import React from "react";
 import "./styles/App.scss";
 import Tableau from "./components/Tableau";
-// import Widget from "./components/Widget";
-// import Indicators from "./components/Indicators";
-// import ValueInput from "./components/ValueInput";
-import Prediction from "./components/Prediction";
+import LandPrediction from "./components/LandPrediction";
+import AttributesPrediction from "./components/AttributesPrediction";
 
 function App() {
   return (
@@ -17,19 +15,10 @@ function App() {
         <h1 style={{ width: "fit-content" }}>AI4LS</h1>
       </div>
 
-      <Prediction />
-      {/* <div className="row data-row">
-        <div className="col-2 col-lg-4 col-xl-4">
-          <Indicators />
-        </div>
-        <div className="col-lg-8">
-          <div className="row">
-          <ValueInput />
-            <Widget />
-            <Widget />
-          </div>
-        </div>
-      </div> */}
+      <div className="row">
+        <LandPrediction />
+        <AttributesPrediction />
+      </div>
 
       <div className="row">
         <Tableau />
