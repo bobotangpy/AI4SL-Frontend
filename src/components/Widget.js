@@ -50,26 +50,26 @@ const LandUsePrediction = ({ data }) => {
 
 
 export default function Widget({ predictionMethod, data }) {
-  const renderPredictions = () => {
+  const renderPredictions = (category) => {
     return Object.keys(data).map((attribute) => {
       const attributeData = data[attribute];
-        if (!attributeData.hasOwnProperty("out_of_standard")) {
-          const { value } = attributeData
-          return (
-            <div style={{ display: "flex", flexDirection: "row" }}>
-              <div>{attribute}</div>
-              <div>{value}</div>
-            </div>
-          )
-        }
+      if (attributeData?.info?.category == category && !attributeData.hasOwnProperty("out_of_standard")) {
+        const { value, info } = attributeData
+        return (
+          <div style={{ display: "flex", flexDirection: "row" }} key={attribute}>
+            {info.full? <div>{info.full}</div> : <div>{attribute}</div>}
+            <div>{value}</div>
+          </div>
+        )
+      }
       }
     )
   }
-  const renderPredictionsWithStandard = () => {
+  const renderPredictionsWithStandard = (category) => {
     return Object.keys(data).map((attribute) => {
       const attributeData = data[attribute];
-      if (attributeData.hasOwnProperty("out_of_standard")) {
-        const { value, out_of_standard } = attributeData;
+      if (attributeData?.info?.category == category && attributeData.hasOwnProperty("out_of_standard")) {
+        const { info, value, out_of_standard } = attributeData;
         const standardRange = standardRanges[attribute]
         const valueRange = valueRanges[attribute]
 
@@ -84,6 +84,7 @@ export default function Widget({ predictionMethod, data }) {
               valueRange={valueRange}
               />
               <div>{value.toFixed(2)}</div>
+              <div>{info.unit}</div>
           </div>
         );
       }
@@ -95,20 +96,29 @@ export default function Widget({ predictionMethod, data }) {
     <div className="col-12">
       <div className="widget">
         <div className="border-0">
-          <h6 className="header">Prediction</h6>
+          <h6 className="header">Predictions</h6>
           <div className="d-flex justify-content-between mb-lg body">
-            <p>{JSON.stringify(data)}</p>
+            {/* <p>{JSON.stringify(data)}</p> */}
 
             {/* {predictionMethod === "landClasses" && (
               <LandClassesPrediction data={data} />
             )} */}
 
           </div>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            {renderPredictionsWithStandard()}
-          </div>
+          
           <div>
-            {renderPredictions()}
+            <div>Chemical Attributes</div>
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              {renderPredictionsWithStandard("chemical")}
+            </div>
+            <div>
+              {renderPredictions("chemical")}
+            </div>
+          </div>
+          <div style={{ paddingTop: 20}}>
+            <div>Physical Attributes</div>
+            {renderPredictions("physical")}
+
           </div>
 
 

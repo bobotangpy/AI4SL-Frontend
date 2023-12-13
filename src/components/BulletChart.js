@@ -22,7 +22,7 @@ export default function BulletChart({ attribute, value, standardRange, valueRang
       <ChartBullet
         ariaDesc="Storage capacity"
         ariaTitle="Bullet chart example"
-        comparativeWarningMeasureData={[{ name: 'Uppder Standard', y: standardMin}, { name: 'Lower Standard', y: standardMax }]}
+        comparativeWarningMeasureData={[{ name: 'Upper Standard', y: standardMin}, { name: 'Lower Standard', y: standardMax }]}
         constrainToVisibleArea
         horizontal={false}
         labels={({ datum }) => `${datum.name}: ${datum.y}`}
