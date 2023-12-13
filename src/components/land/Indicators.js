@@ -36,7 +36,7 @@ export default function Indicators({
   return (
     <>
       <Select
-        className="input-transparent"
+        // className="input-transparent"
         placeholder={`Select ${title}`}
         options={options}
         styles={colourStyles}

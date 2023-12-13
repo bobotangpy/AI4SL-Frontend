@@ -18,7 +18,6 @@ export default function LandPrediction() {
   const [showCoverClassWarning, setShowCoverClassWarning] = useState(false);
 
   useEffect(() => {
-    // TODO: need to test & fetch the data, on my machine is error
     getLandClasses()
       .then((res) => {
         if (res !== "No Data") {
@@ -47,7 +46,6 @@ export default function LandPrediction() {
 
   const handleSubmit = () => {
     if (selectedUseClass && selectedCoverClass) {
-      // TODO: need to try call api & get correct values
       queryLandUseCoverPredictions(selectedUseClass, selectedCoverClass)
         .then((res) => {
           if (res !== "No Data") {
@@ -109,12 +107,10 @@ export default function LandPrediction() {
           <LandPredictionResult
             predictionMethod="landClasses"
             prediction={prediction}
-            modelInfo={modelInfo} modelAccuracies={modelAccuracies}
+            modelInfo={modelInfo}
+            modelAccuracies={modelAccuracies}
           />
         )}
-        {/* {modelInfo && modelAccuracies && (
-          <ModelInfo modelInfo={modelInfo} modelAccuracies={modelAccuracies} />
-        )} */}
       </div>
     </div>
   );

@@ -12,40 +12,9 @@ export default function AttributesPredictionResult({ prediction, input }) {
   let predictionResultTexture = prediction?.phy_attributes_texture?.result;
   let predictionResultBulk = prediction?.phy_attributes_bulk_density?.result;
 
-  let ManagementPredictionContent = () => {
-    return (
-      <>
-        Land is{" "}
-        {predictionIsManaged?.result?.prediction ? "managed " : "not managed "}
-        <br />
-        (Probability:{" "}
-        {(predictionIsManaged?.result?.probability * 100).toFixed(0)}%)
-      </>
-    );
-  };
-
-  const renderTexturePredictions = (category) => {
-    return Object.keys(predictionResultTexture).map((attribute) => {
-      const attributeData = predictionResultTexture[attribute];
-      // console.log(attributeData);
-      if (
-        attributeData?.info?.category == category &&
-        !attributeData.hasOwnProperty("out_of_standard")
-      ) {
-        const { value, info } = attributeData;
-        return (
-          <div className="col-6 attributes" key={attribute}>
-            {info.full ? <div>{info.full}</div> : <div>{attribute}</div>}
-            <p>{value}</p>
-          </div>
-        );
-      }
-    });
-  };
-
-  const renderBulkPredictions = (category) => {
-    return Object.keys(predictionResultBulk).map((attribute) => {
-      const attributeData = predictionResultBulk[attribute];
+  const renderPredictions = (result, category, type) => {
+    return Object.keys(result).map((attribute) => {
+      const attributeData = result[attribute];
       // console.log(attributeData);
       if (
         attributeData?.info?.category == category &&
@@ -54,9 +23,10 @@ export default function AttributesPredictionResult({ prediction, input }) {
         const { value, info } = attributeData;
         return (
           <div
-            className="col-8 attributes"
-            key={attribute}
-            style={{ flexDirection: "column" }}
+            className={
+              type === "texture" ? "col-6 attributes" : "col-8 attributes"
+            }
+            key={value}
           >
             {info.full ? <div>{info.full}</div> : <div>{attribute}</div>}
             <p>{value}</p>
@@ -88,6 +58,18 @@ export default function AttributesPredictionResult({ prediction, input }) {
     });
   };
 
+  const ManagementPredictionContent = () => {
+    return (
+      <>
+        Land is{" "}
+        {predictionIsManaged?.result?.prediction ? "managed " : "not managed "}
+        <br />
+        (Probability:{" "}
+        {(predictionIsManaged?.result?.probability * 100).toFixed(0)}%)
+      </>
+    );
+  };
+
   return (
     <>
       <div className="row">
@@ -107,8 +89,8 @@ export default function AttributesPredictionResult({ prediction, input }) {
       <Widget
         title={"Physical Soil Attributes Prediction"}
         content={
-          (renderTexturePredictions("physical"),
-          renderBulkPredictions("physical"))
+          (renderPredictions(predictionResultTexture, "physical", "texture"),
+          renderPredictions(predictionResultBulk, "physical"))
         }
       />
 
