@@ -9,11 +9,10 @@ const colourStyles = {
       boxShadow: "none",
       margin: 0,
       borderRadius: 0,
-      color: "#fff",
-      backgroundColor: "var(--sidebar-color)",
+      color: "#000",
       ":active": {
         ...styles[":active"],
-        backgroundColor: !isDisabled ? "inherit" : undefined,
+        backgroundColor: !isDisabled ? "#fff" : undefined,
       },
     };
   },
