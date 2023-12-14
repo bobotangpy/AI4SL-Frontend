@@ -46,11 +46,11 @@ export default function LandPredictionResult({
         content={renderPredictionsWithStandard("chemical")}
       />
       <Widget
-        title={"Physical Attributes Predictions"}
-        content={renderPredictions("physical")}
+        title={"Chemical Attributes Predictions"}
+        content={renderPredictions("chemical")}
       />
       <Widget
-        title={"Model Information"}
+        title={"Physical Attributes Prediction"}
         content={renderPredictions("physical")}
       />
 
