@@ -107,7 +107,7 @@ export default function AttributesPredictionResult({ prediction, input }) {
       />
       <ModelInfo
         modelType={"Erosion Prediction"}
-        modelInfo={"Support Vector Classification (SVC) model"}
+        modelInfo={"Random Forest Classifier model"}
         modelAccuracy={predictionErosionProb?.model_accuracy}
       />
       <ModelInfo

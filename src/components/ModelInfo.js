@@ -11,9 +11,9 @@ const ModelInfo = ({
     <div className="col-12">
       <div className="widget">
         <div className="border-0">
-          <h6 className="header" style={{ paddingBottom: "10px" }}>
+          <h4 className="header" style={{ paddingBottom: "10px" }}>
             {modelType ? modelType : ""} Model Information
-          </h6>
+          </h4>
           <div className="body content" style={{ paddingLeft: "25px" }}>
             {modelInfo}
           </div>

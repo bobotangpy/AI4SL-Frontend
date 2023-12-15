@@ -21,7 +21,10 @@ export default function LandPredictionResult({
         return (
           <div className="col-6 attributes" key={attribute}>
             {info.full ? <div>{info.full}</div> : <div>{attribute}</div>}
-            <p>{value}</p>
+            <div style={{display: "flex", flexDirection: "row"}}>
+              <p>{value.toFixed(2)} </p>
+              <p> {info.unit}</p>
+            </div>
           </div>
         );
       }

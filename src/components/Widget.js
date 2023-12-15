@@ -5,7 +5,7 @@ export default function Widget({ title, content, size, styleSetting }) {
     <div className={size === "half" ? "col-6" : "col-12"}>
       <div className="widget">
         <div className="border-0">
-          <h6 className="header">{title}</h6>
+          <h4 className="header">{title}</h4>
           <div
             className="body content"
             style={
